@@ -7,11 +7,15 @@ load_dotenv()
 
 client_id = os.getenv("TWITCH_CLIENT_ID")
 client_secret = os.getenv("TWITCH_CLIENT_SECRET")
+client_user_token = os.getenv("TWITCH_USER_TOKEN")
 
 response = requests.post("https://id.twitch.tv/oauth2/token", params={
     "client_id": client_id,
     "client_secret": client_secret,
-    "grant_type": "client_credentials"
+    "code": client_user_token,
+    "grant_type": "client_credentials",
+    "redirect_uri": "http://localhost:3000"
+
 })
 
 token_data = response.json()
