@@ -1,5 +1,6 @@
 import os
 import asyncio
+import subprocess
 from twitchAPI.twitch import Twitch
 print("Импорт есть!")
 from twitchAPI.oauth import UserAuthenticator
@@ -19,6 +20,7 @@ async def on_ready(ready_event: EventData):
 
 async def on_message(msg: ChatMessage):
     print(f"{msg.user.name}: {msg.text}")
+    subprocess.run(["paplay", "sound.wav"])
 
 async def run():
     print("Шаг 1: создаю twitch")
